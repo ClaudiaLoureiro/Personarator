@@ -1,0 +1,955 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>menu 2</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+				box-sizing:border-box;
+				/*font-family: 'Walter Turncoat', cursive;*/
+				font-family: 'Ranga', cursive;
+				/* desactiva o arrasto e seleccao das img*/
+				user-drag: none; 
+				user-select: none;
+				-moz-user-select: none;
+				-webkit-user-drag: none;
+				-webkit-user-select: none;
+				-ms-user-select: none;
+			}
+		
+			.wrap{
+				
+				width:850px;
+				height:635px;
+				margin:0 auto;
+				
+				
+				/*background-color:#eee;
+				background-image: url(cenario2.png);
+				background-position:center center;
+				background-repeat: no-repeat;
+				background-size:cover;*/
+			}
+			
+			.left_board, .right_board{
+				position:relative;
+				float:left;
+				top:125px;
+				height:460px;
+				width:150px;
+				
+			}
+			
+			/*.right_board{
+				left:100px;
+			}*/
+			
+			.bottom_board{
+				position:relative;
+				top:465px;
+				/*left:50px;*/
+				float:left;
+				height:120px;
+				width:550px;
+			}
+			
+			.menu_hair, .menu_bangs, .menu_nose, .menu_mouth, .menu_ears, .menu_eyes, .menu_nose, .menu_earings, .menu_face, .menu_eyebrow{
+				position:relative;
+				float:left;
+				width:150px;
+				height:120px;
+				background-color:white;
+				cursor:pointer;
+				
+			}
+			
+			.menu_bangs{
+				top:50px;
+			}
+			
+			.menu_eyes{
+				top:100px;
+			}
+			
+			.menu_nose{
+				left:25px;
+			}
+			
+			.menu_mouth{
+				left:50px;
+			}
+			
+			.menu_ears{
+				left:75px;
+				right:25px;
+			}
+			
+			.menu_face{
+				top:50px;
+			}
+			
+			.menu_eyebrow{
+				top:100px;
+			}
+			
+			.btn_left, .btn_right{
+				position:relative;
+				float:left;
+				width:30px;
+				height:90px;
+			}
+			
+			.btn_left img, .btn_right img{
+				float:left;
+				height:30px;
+				width:30px;
+				border:2px solid white;
+			}
+			
+			.btn_back_front{
+				position:relative;
+				float:left;
+				height:30px;
+				width:150px;
+			}
+			
+			.btn_back, .btn_front{
+				float:left;
+				height:30px;
+				width:75px;
+				background-color:blue;
+				color:white;
+				border:2px solid transparent;
+				color:white;
+			}
+			
+			.btn_front p, .btn_back p{
+				position:relative;
+				font-size:15px;
+				top:4px;
+			}
+			
+			.btn_back p{
+				left:6px;
+			}
+			.btn_front p{
+				left:4px;
+			}
+			
+			#btn_hair, #btn_bangs, #btn_eye, #btn_nose, #btn_mouth, #btn_ear, #btn_earings, #btn_face, #btn_eyebrow{
+				position:relative;
+				float:left;
+				top:;
+				left:;
+				right:;
+				height:90px;
+				width:90px;
+			}
+			
+			.canvas{
+				position:relative;
+				left:150px;
+				height:465px;
+				width:550px;
+				/*background-color:yellow;
+				border:2px solid red;*/
+				
+			}
+			
+			.inside_canvas{
+				position:relative;
+				top:20px;
+				left:20px;
+				height:425px;
+				width:510px;
+				/*border:2px solid red;*/
+				
+			}
+			
+			.inside_canvas img{
+				position:absolute;
+				top:0;
+				left:0;
+				
+			}
+			
+			.title{
+				height:50px;
+				witdth:100%;
+				background-color:#eee;
+				color:blue;
+				padding-left:20px;
+				font-size:18px;
+			}
+			
+			.show{
+				display:none;
+			}
+			
+			.wrap2{
+				float:left;
+				position:absolute;
+				display:none;
+				width:850px;
+				height:635px;
+				margin:0 auto;
+				background-color:black;
+				opacity:1;
+				z-index:5;
+				
+			}
+			
+			.warning{
+				position:relative;
+				top:50px;
+				left:50px;
+				display:none;
+				color:white;
+				font-size:50px;
+			}
+			
+			#close-window{
+				height:50px;
+				width:50px;
+				float:right;
+				padding:0px;
+				background-color:white;
+				color:black;
+				text-align:center;
+				cursor:pointer;
+				font-size:40px;
+			}
+			
+			#close-window-x{
+				position:relative;
+				top:0px;
+				height:30px;
+				width:30px;
+				float:right;
+				background-color:blue;
+				color:white;
+				text-align:center;
+				cursor:pointer;
+				font-size:20px;
+				
+			}
+			
+			
+			
+			@media only screen and (max-width: 1000px) {
+				.wrap2{
+					display:inline;
+				}
+				
+				.warning{
+					display:block;
+					color:white;
+				}
+				.close_window{
+					display:inline;
+				}
+			}
+			
+			.strap, .strap2{
+				position:absolute;
+				float:left;
+				height:30px; 
+				width:60px;
+				background-color:yellow;
+				font-size:20px;
+				
+			}
+			
+			.strap{
+				top:0px;
+				left:227px;
+				right:;
+				bottom:;
+			}
+			
+			strap2{
+				
+			}
+			
+			#help{
+				font-weight:bold; 
+				position:relative; 
+				float:right; 
+				top:0px; 
+				right:; 
+				height:50px; 
+				width:75px; 
+				font-size:20px; 
+				border-left:2px solid white;  
+				background-color:blue; 
+				padding:12px; 
+				color:white; 
+				cursor:pointer;
+			}
+			
+			#about{
+				font-weight:bold; 
+				position:relative; 
+				float:right; 
+				top:0px; 
+				right:; 
+				height:50px; 
+				width:75px; 
+				font-size:20px; 
+				background-color:blue; 
+				padding:12px; 
+				color:white; 
+				cursor:pointer;
+			}
+			
+			.about_desc{
+				display:none;
+				position:absolute;
+				top:50px;
+				left:808px;
+				height:400px;
+				width:300px;
+				background-color:white;
+				letter-spacing:0.6px;
+				color:blue;
+				z-index:10;
+				border:2px solid blue;
+			}
+			
+			
+			.help_desc{
+				display:none;
+				position:absolute;
+				top:50px;
+				left:808px;
+				height:550px;
+				width:300px;
+				background-color:white;
+				letter-spacing:0.6px;
+				color:blue;
+				z-index:10;
+				border:2px solid blue;
+			}
+			
+			#desc{
+				position:relative;
+				top:20px;
+				padding:20px;
+			}
+		</style>
+		
+		<link href="https://fonts.googleapis.com/css?family=Ranga" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Walter+Turncoat" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	</head>
+	<body>
+		
+		<!--<div class="help_desc">hello</div>-->
+		<div class="wrap">
+			<div class="wrap2">
+				<p id="close-window">X</p>
+				<p class="warning">Este Jogo Precisa de um ecrã grande!!!</p>
+			</div>
+			
+			<div class="title">
+				<div id="help">HELP</div>
+				<div id="about">ABOUT</div>
+				<div class="about_desc">
+					<div id="close-window-x">
+						<p>x</p>
+					</div>
+					<div id="desc">
+					
+						<p>Hello!</p>
+						<br>
+						<p>My name is Cláudia, I am an illustrator and a programmer.</p>
+						<p>This is a mini project I made, illustrations and site, so I could work on my html/css/JQ skills.</p>
+						<p>Hope you enjoy it as much as I did!</p>
+						<br>
+						<p>Thank for stopping by!!!</p>
+					</div>
+				</div>
+				
+				<div class="help_desc">
+					<div id="close-window-x">
+						<p>x</p>
+					</div>
+					<div id="desc">
+						<p><b>^ & v</b> - mover o objecto na vertical.</p>
+						<br>
+						<p><b>< & ></b> - mover o objecto na horizontal.</p>
+						<br>
+						<p><b>click icon</b> - muda objecto correspondente.</p>
+						<br>
+						<p><b>duplo click icon</b> - elimina e faz aparecer o objecto correspondente.</p>
+						<br>
+						<p><b>send back</b> - coloca o objecto mais atrás em relação aos outros.</p>
+						<br>
+						<p><b>send Front</b> - coloca o objecto mais à frente em relação aos outros.</p>
+						<br>
+						<p><b>+ & -</b> - aumenta e diminui o objecto correspondente.</p>
+						
+					</div>
+				</div>
+				
+				<h1><!--Build Your Character--> Personarator <sup>&copy;</sup><h1>
+				
+			</div>
+			<div class="left_board">
+				<div class="menu_hair">
+					<div class="btn_left">
+						<img id="hair_cima" src="icons/a-cima.png"/>
+						<img id="hair_baixo" src="icons/a-baixo.png"/>
+						<img id="hair_minus" src="icons/a-minus-sign2.png"/>
+					</div>
+					<img id="btn_hair" src="icons/icon_hair.png">
+					<div class="btn_right">
+						<img id="hair_esq" src="icons/a-esq.png"/>
+						<img id="hair_dir" src="icons/a-dir.png"/>
+						<img id="hair_plus" src="icons/a-plus-sign.png"/>
+					</div>
+					<div class="btn_back_front">
+						<div id="hair_back" class="btn_back">
+							<p>SEND BACK</p>
+						</div>
+						<div id="hair_front" class="btn_front">
+							<p>SEND FRONT</p>
+						</div>
+					</div>
+				</div>
+				<div class="menu_bangs">
+					<div class="btn_left">
+						<img id="bangs_cima" src="icons/a-cima.png"/>
+						<img id="bangs_baixo" src="icons/a-baixo.png"/>
+						<img id="bangs_minus" src="icons/a-minus-sign2.png"/>
+					</div>
+					<img id="btn_bangs" src="icons/icon_bangs.png">
+					<div class="btn_right">
+						<img id="bangs_esq" src="icons/a-esq.png"/>
+						<img id="bangs_dir" src="icons/a-dir.png"/>
+						<img id="bangs_plus" src="icons/a-plus-sign.png"/>
+					</div>
+					<div class="btn_back_front">
+						<div id="bangs_back" class="btn_back">
+							<p>SEND BACK</p>
+						</div>
+						<div id="bangs_front" class="btn_front">
+							<p>SEND FRONT</p>
+						</div>
+					</div>
+				</div>
+				<div class="menu_eyes">
+					<div class="btn_left">
+						<img id="eyes_cima" src="icons/a-cima.png"/>
+						<img id="eyes_baixo" src="icons/a-baixo.png"/>
+						<img id="eyes_minus" src="icons/a-minus-sign2.png"/>
+					</div>
+					<img id="btn_eye" src="icons/icon_eye.png">
+					<div class="btn_right">
+						<img id="eyes_esq" src="icons/a-esq.png"/>
+						<img id="eyes_dir" src="icons/a-dir.png"/>
+						<img id="eyes_plus" src="icons/a-plus-sign.png"/>
+					</div>
+					<div class="btn_back_front">
+						<div id="eyes_back" class="btn_back">
+							<p>SEND BACK</p>
+						</div>
+						<div id="eyes_front" class="btn_front">
+							<p>SEND FRONT</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="bottom_board">
+				<div class="menu_nose">
+					<div class="btn_left">
+						<img id="nose_cima" src="icons/a-cima.png"/>
+						<img id="nose_baixo" src="icons/a-baixo.png"/>
+						<img id="nose_minus" src="icons/a-minus-sign2.png"/>
+					</div>
+					<img id="btn_nose" src="icons/icon_nose.png">
+					<div class="btn_right">
+						<img id="nose_esq" src="icons/a-esq.png"/>
+						<img id="nose_dir" src="icons/a-dir.png"/>
+						<img id="nose_plus" src="icons/a-plus-sign.png"/>
+					</div>
+					<div class="btn_back_front">
+						<div id="nose_back" class="btn_back">
+							<p>SEND BACK</p>
+						</div>
+						<div id="nose_front" class="btn_front">
+							<p>SEND FRONT</p>
+						</div>
+					</div>
+				</div>
+				<div class="menu_mouth">
+					<div class="btn_left">
+						<img id="mouth_cima" src="icons/a-cima.png"/>
+						<img id="mouth_baixo" src="icons/a-baixo.png"/>
+						<img id="mouth_minus" src="icons/a-minus-sign2.png"/>
+					</div>
+					<img id="btn_mouth" src="icons/icon_mouth.png">
+					<div class="btn_right">
+						<img id="mouth_esq" src="icons/a-esq.png"/>
+						<img id="mouth_dir" src="icons/a-dir.png"/>
+						<img id="mouth_plus" src="icons/a-plus-sign.png"/>
+					</div>
+					<div class="btn_back_front">
+						<div id="mouth_back" class="btn_back">
+							<p>SEND BACK</p>
+						</div>
+						<div id="mouth_front" class="btn_front">
+							<p>SEND FRONT</p>
+						</div>
+					</div>
+				</div>
+				<div class="menu_ears">
+					<div class="btn_left">
+						<img id="ears_cima" src="icons/a-cima.png"/>
+						<img id="ears_baixo" src="icons/a-baixo.png"/>
+						<img id="ears_minus" src="icons/a-minus-sign2.png"/>
+					</div>
+					<img id="btn_ear" src="icons/icon_ear.png">
+					<div class="btn_right">
+						<img id="ears_esq" src="icons/a-esq.png"/>
+						<img id="ears_dir" src="icons/a-dir.png"/>
+						<img id="ears_plus" src="icons/a-plus-sign.png"/>
+					</div>
+					<div class="btn_back_front">
+						<div id="ears_back" class="btn_back">
+							<p>SEND BACK</p>
+						</div>
+						<div id="ears_front" class="btn_front">
+							<p>SEND FRONT</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="right_board">
+				<div class="menu_earings">
+					<div class="btn_left">
+						<img id="earings_cima" src="icons/a-cima.png"/>
+						<img id="earings_baixo" src="icons/a-baixo.png"/>
+						<img id="earings_minus" src="icons/a-minus-sign2.png"/>
+					</div>
+					<img id="btn_earings" src="icons/icon_earings.png">
+					<div class="btn_right">
+						<img id="earings_esq" src="icons/a-esq.png"/>
+						<img id="earings_dir" src="icons/a-dir.png"/>
+						<img id="earings_plus" src="icons/a-plus-sign.png"/>
+					</div>
+					<div class="btn_back_front">
+						<div id="earings_back" class="btn_back">
+							<p>SEND BACK</p>
+						</div>
+						<div id="earings_front" class="btn_front">
+							<p>SEND FRONT</p>
+						</div>
+					</div>
+				</div>
+				<div class="menu_face">
+					<div class="btn_left">
+						<img id="face_cima" src="icons/a-cima.png"/>
+						<img id="face_baixo" src="icons/a-baixo.png"/>
+						<img id="face_minus" src="icons/a-minus-sign2.png"/>
+					</div>
+					<img id="btn_face" src="icons/icon_face.png">
+					<div class="btn_right">
+						<img id="face_esq" src="icons/a-esq.png"/>
+						<img id="face_dir" src="icons/a-dir.png"/>
+						<img id="face_plus" src="icons/a-plus-sign.png"/>
+					</div>
+					<div class="btn_back_front">
+						<div id="face_back" class="btn_back">
+							<p>SEND BACK</p>
+						</div>
+						<div id="face_front" class="btn_front">
+							<p>SEND FRONT</p>
+						</div>
+					</div>
+				</div>
+				<div class="menu_eyebrow">
+					<div class="btn_left">
+						<img id="eyebrow_cima" src="icons/a-cima.png"/>
+						<img id="eyebrow_baixo" src="icons/a-baixo.png"/>
+						<img id="eyebrow_minus" src="icons/a-minus-sign2.png"/>
+					</div>
+					<img id="btn_eyebrow" src="icons/icon_eyebrow.png">
+					<div class="btn_right">
+						<img id="eyebrow_esq" src="icons/a-esq.png"/>
+						<img id="eyebrow_dir" src="icons/a-dir.png"/>
+						<img id="eyebrow_plus" src="icons/a-plus-sign.png"/>
+					</div>
+					<div class="btn_back_front">
+						<div id="eyebrow_back" class="btn_back">
+							<p>SEND BACK</p>
+						</div>
+						<div id="eyebrow_front" class="btn_front">
+							<p>SEND FRONT</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="canvas">
+				<div class="inside_canvas">
+					<img id="hair" src="hair_s/hair_1.png" height="150px" width="" style="top:30px; left:50px; z-index:0;" />
+					
+					<img id="bangs" src="bang_s/bangs_3.png" height="205px" width="auto" style="top:30px; left:120px; z-index:3;"/>
+					
+					<img id="eyes" src="eye_s/olhos_1.png" height="60px" width="auto" style="top:200px; left:160px; z-index:3;"/>
+					
+					<img id="nose" src="nose_s/nariz_2.png" height="50px" width="auto" style="top:250px; left:200px; z-index:4;"/>
+					
+					<img id="ears" src="ear_s/ears_1.png" height="45px" width="auto" style="top:230px; left:122px; z-index:2;"/>
+					
+					<img id="face" src="face_s/face_1.png" height="340px" width="auto" style="top:50px; left:150px; z-index:2;"/>
+					
+					<img id="earings" src="earing_s/brincos_1.png" height="46px" width="auto" style="top:260px; left:130px; z-index:3;"/>
+					
+					<img id="eyebrow" src="eyebrow_s/blue_a.png" height="25px" width="auto" style="top:160px; left:160px; z-index:3;"/>
+					
+					<img id="mouth" src="mouth_s/mouth_5.png" height="20px" width="auto" style="top:300px; left:250px; z-index:3;"/>
+				</div>
+			</div>
+		</div>
+			<script>
+				function main(){
+					var b = 11;
+					$('#about').click(function(){
+						$('.help_desc').hide();
+						$('.about_desc').show('fast');
+					});
+					$('.about_desc > div').click(function(){$('.about_desc').hide('.about_desc');});
+					
+					$('#help').click(function(){
+						$('.about_desc').hide();
+						$('.help_desc').show('fast');
+					});
+					$('.help_desc > div').click(function(){$('.help_desc').hide('.help_desc');});
+					
+					function horizontal_pos(btn,obj,way){
+						//way = direction, true = right(+10), false = left(-10)
+						// btn = char, obj = char, way = bol
+						
+						if(way){
+							$(btn).on("click", function(){
+								$(obj).css("left", function(index, value){
+									return parseInt(value) + 10; 
+								});
+							});
+						}else{
+							$(btn).on("click", function(){
+								$(obj).css("left", function(index, value){
+									return parseInt(value) - 10; 
+								});
+							});
+						};
+					};
+					
+					function vertical_pos(btn,obj,way){
+						//way = direction, true = down(+10), false = top(-10)
+						//btn = char, obj = char, way = bol
+						if(way === true){
+							$(btn).on("click", function(){
+								$(obj).css("top", function(index, value){
+									return parseInt(value) + 10; 
+								});
+							});
+						}else{
+							$(btn).on("click", function(){
+								$(obj).css("top", function(index, value){
+									return parseInt(value) - 10; 
+								});
+							});
+						};
+					};
+					
+					function dim(btn,obj,way){
+						if(way === true){
+							$(btn).on("click", function(){
+								$(obj).css("height", function(index, value){
+									return parseInt(value) + 3; 
+								});
+							});
+						}else{
+							$(btn).on("click", function(){
+								$(obj).css("height", function(index, value){
+									return parseInt(value) - 3; 
+								});
+							});
+						};
+					};
+		
+					/*function change_obj(btn,obj,array){
+						var arr = array;
+						$(btn).click(function(){
+								a++;
+								if(a < arr.length){
+									$(obj).attr('src', arr[a]);
+								}else{
+									a=0
+									$(obj).attr('src', arr[a]);
+								}
+							});
+						};
+					};*/
+					
+					function ind(btn,obj,way){
+						$(btn).on("click", function(){
+							if(way === true){
+								$(obj).css("z-index",function(index,value){
+									return parseInt(value) + 1;
+								});
+							}else{
+								$(obj).css("z-index",function(index,value){
+									return parseInt(value) - 1;
+								});
+							};
+						});
+					};
+					
+					
+					
+					$("#btn_hair").on("dblclick", function(){
+						$("#hair").toggleClass("show");
+					});
+					
+					
+					
+					$("#btn_eye").on("dblclick", function(){
+						$("#eyes").toggleClass("show");
+					});
+					
+					$("#btn_bangs").on("dblclick", function(){
+						$("#bangs").toggleClass("show");
+					});
+					
+					$("#btn_ear").on("dblclick", function(){
+						$("#ears").toggleClass("show");
+					});
+					
+					$("#btn_earings").on("dblclick", function(){
+						$("#earings").toggleClass("show");
+					});
+					
+					$("#btn_mouth").on("dblclick", function(){
+						$("#mouth").toggleClass("show");
+					});
+					
+					$("#btn_eyebrow").on("dblclick", function(){
+						$("#eyebrow").toggleClass("show");
+					});
+					
+					$("#btn_face").on("dblclick", function(){
+						$("#face").toggleClass("show");
+					});
+					
+					$("#btn_nose").on("dblclick", function(){
+						$("#nose").toggleClass("show");
+					});
+					
+					
+					$(".wrap2").on("click", function(){
+						$(this).hide();
+					});
+					
+					
+					horizontal_pos("#hair_dir","#hair",true);
+					horizontal_pos("#hair_esq","#hair",false);
+					vertical_pos("#hair_baixo","#hair",true);
+					vertical_pos("#hair_cima","#hair",false);
+					dim("#hair_plus","#hair",true);
+					dim("#hair_minus","#hair",false);
+					ind("#hair_back","#hair",false);
+					ind("#hair_front","#hair",true);
+					
+					horizontal_pos("#bangs_dir","#bangs",true);
+					horizontal_pos("#bangs_esq","#bangs",false);
+					vertical_pos("#bangs_baixo","#bangs",true);
+					vertical_pos("#bangs_cima","#bangs",false);
+					dim("#bangs_plus","#bangs",true);
+					dim("#bangs_minus","#bangs",false);
+					ind("#bangs_back","#bangs",false);
+					ind("#bangs_front","#bangs",true);
+					
+					horizontal_pos("#eyes_dir","#eyes",true);
+					horizontal_pos("#eyes_esq","#eyes",false);
+					vertical_pos("#eyes_baixo","#eyes",true);
+					vertical_pos("#eyes_cima","#eyes",false);
+					dim("#eyes_plus","#eyes",true);
+					dim("#eyes_minus","#eyes",false);
+					ind("#eyes_back","#eyes",false);
+					ind("#eyes_front","#eyes",true);
+					
+					horizontal_pos("#nose_dir","#nose",true);
+					horizontal_pos("#nose_esq","#nose",false);
+					vertical_pos("#nose_baixo","#nose",true);
+					vertical_pos("#nose_cima","#nose",false);
+					dim("#nose_plus","#nose",true);
+					dim("#nose_minus","#nose",false);
+					ind("#nose_back","#nose",false);
+					ind("#nose_front","#nose",true);
+					
+					horizontal_pos("#ears_dir","#ears",true);
+					horizontal_pos("#ears_esq","#ears",false);
+					vertical_pos("#ears_baixo","#ears",true);
+					vertical_pos("#ears_cima","#ears",false);
+					dim("#ears_plus","#ears",true);
+					dim("#ears_minus","#ears",false);
+					ind("#ears_back","#ears",false);
+					ind("#ears_front","#ears",true);
+					
+					horizontal_pos("#earings_dir","#earings",true);
+					horizontal_pos("#earings_esq","#earings",false);
+					vertical_pos("#earings_baixo","#earings",true);
+					vertical_pos("#earings_cima","#earings",false);
+					dim("#earings_plus","#earings",true);
+					dim("#earings_minus","#earings",false);
+					ind("#earings_back","#earings",false);
+					ind("#earings_front","#earings",true);
+					
+					horizontal_pos("#face_dir","#face",true);
+					horizontal_pos("#face_esq","#face",false);
+					vertical_pos("#face_baixo","#face",true);
+					vertical_pos("#face_cima","#face",false);
+					dim("#face_plus","#face",true);
+					dim("#face_minus","#face",false);
+					ind("#face_back","#face",false);
+					ind("#face_front","#face",true);
+					
+					horizontal_pos("#mouth_dir","#mouth",true);
+					horizontal_pos("#mouth_esq","#mouth",false);
+					vertical_pos("#mouth_baixo","#mouth",true);
+					vertical_pos("#mouth_cima","#mouth",false);
+					dim("#mouth_plus","#mouth",true);
+					dim("#mouth_minus","#mouth",false);
+					ind("#mouth_back","#mouth",false);
+					ind("#mouth_front","#mouth",true);
+					
+					horizontal_pos("#eyebrow_dir","#eyebrow",true);
+					horizontal_pos("#eyebrow_esq","#eyebrow",false);
+					vertical_pos("#eyebrow_baixo","#eyebrow",true);
+					vertical_pos("#eyebrow_cima","#eyebrow",false);
+					dim("#eyebrow_plus","#eyebrow",true);
+					dim("#eyebrow_minus","#eyebrow",false);
+					ind("#eyebrow_back","#eyebrow",false);
+					ind("#eyebrow_front","#eyebrow",true);
+					
+					var hair = ['hair_s/hair_1.png','hair_s/hair_2.png','hair_s/hair_3.png'];
+					var bangs = ['bang_s/bangs_2.png','bang_s/bangs_3.png','bang_s/bangs_4.png'];
+					var eyes = ['eye_s/olhos_1.png','eye_s/olhos_2.png','eye_s/olhos_3.png','eye_s/olhos_4.png','eye_s/olhos_5.png'];
+					var nose = ['nose_s/nariz_1.png','nose_s/nariz_2.png','nose_s/nariz_3.png','nose_s/nariz_4.png','nose_s/nariz_5.png'];
+					var ears = ['ear_s/ears_1.png','ear_s/ears_2.png','ear_s/ears_3.png','ear_s/ears_4.png'];
+					var face = ['face_s/face_1.png','face_s/face_2.png','face_s/face_3.png','face_s/face_4.png','face_s/face_5.png'];
+					var earings = ['earing_s/brincos_1.png','earing_s/brincos_2.png','earing_s/brincos_3.png','earing_s/brincos_4.png'];
+					var eyebrow = ['eyebrow_s/black_a.png','eyebrow_s/black_b.png','eyebrow_s/blue_a.png','eyebrow_s/blue_b.png','eyebrow_s/pink_a.png','eyebrow_s/pink_b.png','eyebrow_s/yellow_a.png','eyebrow_s/yellow_b.png'];
+					var mouth = ['mouth_s/mouth_1.png','mouth_s/mouth_2.png','mouth_s/mouth_3.png','mouth_s/mouth_5.png','mouth_s/mouth_6.png'];
+					
+					var a=0;
+					//change_obj("#btn_hair","#hair", hair);
+					
+					
+					$("#btn_hair").click(function(){
+						a++;
+						if(a < hair.length){
+							$("#hair").attr('src', hair[a]);
+						}else{
+							a=0
+							$("#hair").attr('src', hair[a]);
+						}
+					});
+					
+					$("#btn_bangs").click(function(){
+						a++;
+						if(a < bangs.length){
+							$("#bangs").attr('src', bangs[a]);
+						}else{
+							a=0
+							$("#bangs").attr('src', bangs[a]);
+						}
+					});
+					
+					$("#btn_eye").click(function(){
+						a++;
+						if(a < eyes.length){
+							$("#eyes").attr('src', eyes[a]);
+						}else{
+							a=0
+							$("#eyes").attr('src', eyes[a]);
+						}
+					});
+					
+					$("#btn_nose").click(function(){
+						a++;
+						if(a < nose.length){
+							$("#nose").attr('src', nose[a]);
+						}else{
+							a=0
+							$("#nose").attr('src', nose[a]);
+						}
+					});
+					
+					$("#btn_ear").click(function(){
+						a++;
+						if(a < ears.length){
+							$("#ears").attr('src', ears[a]);
+						}else{
+							a=0
+							$("#ears").attr('src', ears[a]);
+						}
+					});
+					
+					$("#btn_earings").click(function(){
+						a++;
+						if(a < earings.length){
+							$("#earings").attr('src', earings[a]);
+						}else{
+							a=0
+							$("#earings").attr('src', earings[a]);
+						}
+					});
+					
+					$("#btn_face").click(function(){
+						a++;
+						if(a < face.length){
+							$("#face").attr('src', face[a]);
+						}else{
+							a=0
+							$("#face").attr('src', face[a]);
+						}
+					});
+					
+					$("#btn_mouth").click(function(){
+						a++;
+						if(a < mouth.length){
+							$("#mouth").attr('src', mouth[a]);
+						}else{
+							a=0
+							$("#mouth").attr('src', mouth[a]);
+						}
+					});
+					
+					$("#btn_eyebrow").click(function(){
+						a++;
+						if(a < eyebrow.length){
+							$("#eyebrow").attr('src', eyebrow[a]);
+						}else{
+							a=0
+							$("#eyebrow").attr('src', eyebrow[a]);
+						}
+					});
+				
+					
+				};
+				
+				
+				$(document).ready(main);
+			
+			</script>
+	</body>
+</html>
