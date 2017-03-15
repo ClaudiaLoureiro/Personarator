@@ -235,22 +235,6 @@
 				font-size:20px;
 			}
 			
-			
-			
-			@media only screen and (max-width: 1000px) {
-				.wrap2{
-					display:inline;
-				}
-				
-				.warning{
-					display:block;
-					color:white;
-				}
-				.close_window{
-					display:inline;
-				}
-			}
-			
 			.strap, .strap2{
 				position:absolute;
 				float:left;
@@ -267,11 +251,7 @@
 				right:;
 				bottom:;
 			}
-			
-			strap2{
-				
-			}
-			
+	
 			#help{
 				font-weight:bold; 
 				position:relative; 
@@ -346,7 +326,26 @@
 				text-decoration:none;
 				color:blue;
 			}
-			
+		
+			@media only screen and (max-width: 1000px) {
+				.wrap2{
+					display:inline;
+				}
+				
+				.warning{
+					display:block;
+					color:white;
+				}
+				
+				.close_window{
+					display:inline;
+				}
+				
+				.about_desc, .help_desc{
+					position:absolute;
+					left:569px;
+				}
+			}
 		</style>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">	
 		      
@@ -361,7 +360,7 @@
 		<div class="wrap">
 			<div class="wrap2">
 				<p id="close-window">X</p>
-				<p class="warning">Este Jogo Precisa de um ecrã grande!!!</p>
+				<p class="warning">This mini-game needs a bigger screen!!!</p>
 			</div>
 			
 			<div class="title">
